@@ -1,16 +1,45 @@
-# React + Vite
+# 🚗 DriveNow - Car Rental
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+DriveNow is a modern ReactJS car rental website that allows users to explore available cars, check prices and availability, search for cars, and make a booking.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🚘 Browse different cars
+- 💰 Display rental prices per day
+- 🟢 Check car availability
+- 🔴 Show rented cars
+- 🔍 Search for cars
+- 📅 Book available cars
+- ✅ Booking confirmation
+- 📱 Responsive design
+- 🎨 Clean and modern user interface
 
-## React Compiler
+## ⚛️ ReactJS Concepts Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project was created to demonstrate the following ReactJS concepts:
 
-## Expanding the Oxlint configuration
+### 1. Reusable Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The project is divided into reusable components:
+
+- Navbar
+- Hero
+- SearchBar
+- CarCard
+- BookingModal
+- Footer
+
+### 2. Props
+
+Props are used to pass car information between components.
+
+Example:
+
+```jsx
+<CarCard
+  name={car.name}
+  type={car.type}
+  price={car.price}
+  rating={car.rating}
+  available={car.available}
+/>
