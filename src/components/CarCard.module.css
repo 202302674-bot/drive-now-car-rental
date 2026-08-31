@@ -1,0 +1,39 @@
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #dc2626;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.available {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  padding: 6px 10px;
+  border-radius: 15px;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.unavailable {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  padding: 6px 10px;
+  border-radius: 15px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}

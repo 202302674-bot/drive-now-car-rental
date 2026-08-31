@@ -134,18 +134,6 @@ main p {
   object-fit: cover;
 }
 
-.discount-badge {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: #2563eb;
-  color: white;
-  padding: 7px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 .car-info {
   padding: 22px;
 }
@@ -185,24 +173,6 @@ main p {
 
 .car-details div span {
   color: #6b7280;
-}
-
-.available,
-.rented {
-  padding: 6px 10px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.available {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.rented {
-  background: #fee2e2;
-  color: #dc2626;
 }
 
 .book-button,
@@ -456,14 +426,6 @@ main p {
   cursor: pointer;
 }
 
-.modal-label {
-  color: #2563eb;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
 .booking-modal h2 {
   font-size: 30px;
   margin: 0 0 8px;
@@ -498,19 +460,11 @@ main p {
   font-size: 15px;
 }
 
-.confirm-button {
-  border: none;
-  padding: 14px;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  font-size: 15px;
+.form-error {
+  margin: -4px 0 0;
+  color: #dc2626;
+  font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
-}
-
-.confirm-button:hover {
-  background: #1d4ed8;
 }
 
 .success-message {

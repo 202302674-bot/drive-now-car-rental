@@ -1,42 +1,79 @@
-import { useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CarCard from "./components/CarCard";
 import BookingModal from "./components/BookingModal";
 import SearchBar from "./components/SearchBar";
-import "./App.css";
+
+import useDocumentTitle from "./hooks/useDocumentTitle";
+import useBookingReducer from "./hooks/useBookingReducer";
 
 import cars from "./data/cars";
 
+import "./App.css";
+
 function App() {
+  useDocumentTitle("DriveNow | Car Rental");
+
+  // useState: search state
   const [search, setSearch] = useState("");
-  const [selectedCar, setSelectedCar] = useState(null);
-  const [confirmedCar, setConfirmedCar] = useState(null);
 
-  const normalizedSearch = search.trim().toLowerCase();
-  const filteredCars = cars.filter((car) =>
-    `${car.name} ${car.type}`.toLowerCase().includes(normalizedSearch)
-  );
+  // useReducer: booking state
+  const [bookingState, dispatch] = useBookingReducer();
 
-  const handleBooking = (car) => {
-    setSelectedCar(car);
-    setConfirmedCar(null);
-  };
+  const { selectedCar, confirmedCar } = bookingState;
 
-  const handleConfirmBooking = () => {
-    if (!selectedCar) {
-      return;
+  // useEffect: save latest booking
+  useEffect(() => {
+    if (confirmedCar) {
+      localStorage.setItem(
+        "lastBookedCar",
+        JSON.stringify(confirmedCar)
+      );
     }
+  }, [confirmedCar]);
 
-    setConfirmedCar(selectedCar);
-    setSelectedCar(null);
-  };
+  // useMemo: filter cars
+  const filteredCars = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase();
 
-  const closeModal = () => {
-    setSelectedCar(null);
-    setConfirmedCar(null);
-  };
+    return cars.filter((car) =>
+      `${car.name} ${car.type}`
+        .toLowerCase()
+        .includes(normalizedSearch)
+    );
+  }, [search]);
+
+  // useCallback: open booking
+  const handleBooking = useCallback((car) => {
+    dispatch({
+      type: "OPEN_BOOKING",
+      car,
+    });
+  }, [dispatch]);
+
+  // useCallback: confirm booking
+  const handleConfirmBooking = useCallback((bookingDates) => {
+    dispatch({
+      type: "CONFIRM_BOOKING",
+      pickupDate: bookingDates.pickupDate,
+      returnDate: bookingDates.returnDate,
+    });
+  }, [dispatch]);
+
+  // useCallback: close modal
+  const closeModal = useCallback(() => {
+    dispatch({
+      type: "CLOSE_BOOKING",
+    });
+  }, [dispatch]);
 
   return (
     <>
@@ -86,11 +123,18 @@ function App() {
 
         <section className="about-section" id="about">
           <div className="about-content">
-            <p className="section-label">WHY DRIVE NOW</p>
-            <h2>Premium rentals with simple booking</h2>
+            <p className="section-label">
+              WHY DRIVE NOW
+            </p>
+
+            <h2>
+              Premium rentals with simple booking
+            </h2>
+
             <p>
-              DriveNow keeps high-quality cars, clear daily pricing,
-              and availability status in one place so booking stays fast.
+              DriveNow keeps high-quality cars, clear daily
+              pricing, and availability status in one place
+              so booking stays fast.
             </p>
           </div>
 
@@ -124,21 +168,28 @@ function App() {
       {confirmedCar && (
         <div className="success-message">
           <div>
-            <span className="success-icon">✓</span>
+            <span className="success-icon">
+              ✓
+            </span>
 
             <h3>Booking Confirmed!</h3>
 
             <p>
-              Your {confirmedCar.name} has been booked
-              successfully.
+              Your {confirmedCar.name} has been booked from{" "}
+              {confirmedCar.pickupDate} to{" "}
+              {confirmedCar.returnDate}.
             </p>
 
-            <button type="button" onClick={closeModal}>
+            <button
+              type="button"
+              onClick={closeModal}
+            >
               Done
             </button>
           </div>
         </div>
       )}
+
       <Footer />
     </>
   );

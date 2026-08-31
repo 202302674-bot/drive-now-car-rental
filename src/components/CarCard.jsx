@@ -1,3 +1,5 @@
+import styles from "./CarCard.module.css";
+
 function CarCard({
   name,
   type,
@@ -11,10 +13,14 @@ function CarCard({
   return (
     <div className="car-card">
       <div className="car-image-container">
-        <img src={image} alt={name} className="car-image" />
+        <img
+          src={image}
+          alt={name}
+          className="car-image"
+        />
 
         {discount && (
-          <span className="discount-badge">
+          <span className={styles.badge}>
             20% OFF
           </span>
         )}
@@ -27,7 +33,13 @@ function CarCard({
             <p>{type}</p>
           </div>
 
-          <span className="rating">
+          <span
+            className="rating"
+            style={{
+              fontWeight: "700",
+              letterSpacing: "1px",
+            }}
+          >
             ⭐ {rating}
           </span>
         </div>
@@ -38,7 +50,13 @@ function CarCard({
             <span> / day</span>
           </div>
 
-          <span className={available ? "available" : "rented"}>
+          <span
+            className={
+              available
+                ? styles.available
+                : styles.unavailable
+            }
+          >
             {available ? "Available" : "Rented"}
           </span>
         </div>
@@ -46,7 +64,9 @@ function CarCard({
         <button
           type="button"
           className={
-            available ? "book-button" : "disabled-button"
+            available
+              ? "book-button btn btn-primary"
+              : "disabled-button btn btn-secondary"
           }
           disabled={!available}
           onClick={available ? onBook : undefined}
