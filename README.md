@@ -1,6 +1,9 @@
 # 🚗 DriveNow - Car Rental
 
-DriveNow is a modern ReactJS car rental website that allows users to explore available cars, check prices and availability, search for cars, and make a booking.
+DriveNow is a modern and responsive ReactJS car rental web application.
+Users can explore available cars, search for cars, check prices and
+availability, book cars, navigate between multiple pages, and submit
+a contact/registration form.
 
 ## 🌐 Live Demo
 
@@ -10,7 +13,9 @@ DriveNow is a modern ReactJS car rental website that allows users to explore ava
 
 [View Source Code](https://github.com/202302674-bot/drive-now-car-rental)
 
-## ✨ Features
+---
+
+# ✨ Features
 
 - 🚘 Browse different cars
 - 💰 Display rental prices per day
@@ -19,16 +24,27 @@ DriveNow is a modern ReactJS car rental website that allows users to explore ava
 - 🔍 Search for cars
 - 📅 Book available cars
 - ✅ Booking confirmation
+- 💾 Save latest booking using Local Storage
 - 📱 Responsive design
-- 🎨 Clean and modern user interface
+- 🧭 Multi-page navigation
+- 📝 Contact / Registration form
+- ✅ Form validation
+- 📧 Email validation
+- ⏳ Loading state
+- ❌ Error handling
+- 🎉 Success message
+- 🔌 Axios API request
+- 🚫 404 Not Found page
 
-## ⚛️ ReactJS Concepts Used
+---
 
-This project was created to demonstrate the following ReactJS concepts:
+# ⚛️ Assignment 1 - ReactJS Fundamentals
 
-### 1. Reusable Components
+Assignment 1 focuses on building a reusable ReactJS car rental application.
 
-The project is divided into reusable components:
+## Reusable Components
+
+The application is divided into reusable components:
 
 - Navbar
 - Hero
@@ -37,7 +53,7 @@ The project is divided into reusable components:
 - BookingModal
 - Footer
 
-### 2. Props
+## Props
 
 Props are used to pass car information between components.
 
