@@ -1,6 +1,9 @@
 import styles from "./CarCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, selectCartItems } from "../redux/slices/cartSlice";
 
 function CarCard({
+  id,
   name,
   type,
   price,
@@ -10,6 +13,10 @@ function CarCard({
   discount,
   onBook,
 }) {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const cartItem = cartItems.find((item) => item.id === id);
+
   return (
     <div className="car-card">
       <div className="car-image-container">
@@ -72,6 +79,14 @@ function CarCard({
           onClick={available ? onBook : undefined}
         >
           {available ? "Book Now" : "Unavailable"}
+        </button>
+        <button
+          type="button"
+          className="cart-button"
+          disabled={!available}
+          onClick={() => dispatch(addToCart({ id, name, type, price, rating, image, available, discount }))}
+        >
+          {cartItem ? `In cart (${cartItem.quantity})` : "Add to cart"}
         </button>
       </div>
     </div>

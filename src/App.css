@@ -20,6 +20,61 @@ body {
   border-bottom: 1px solid #e5e7eb;
 }
 
+.app-theme {
+  min-height: 100vh;
+  transition: background 0.2s, color 0.2s;
+}
+
+.app-theme-dark {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.app-theme-dark main,
+.app-theme-dark .cars-section {
+  background: #111827;
+}
+
+.app-theme-dark .navbar,
+.app-theme-dark .hero,
+.app-theme-dark .car-card,
+.app-theme-dark .cart-summary,
+.app-theme-dark .about-section {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.app-theme-dark .nav-links a,
+.app-theme-dark .car-header p,
+.app-theme-dark .cart-empty,
+.app-theme-dark .cart-item small {
+  color: #d1d5db;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle,
+.cart-link {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cart-link {
+  border-color: #2563eb;
+  color: #2563eb;
+  font-weight: 700;
+}
+
 .logo {
   font-size: 25px;
   font-weight: 800;
@@ -193,6 +248,98 @@ main p {
 
 .book-button:hover {
   background: #1d4ed8;
+}
+
+.cart-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  background: transparent;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cart-button:disabled {
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.cart-summary {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 7%;
+  background: white;
+}
+
+.cart-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.cart-heading h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.cart-clear,
+.remove-item {
+  border: 0;
+  background: transparent;
+  color: #dc2626;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.cart-items {
+  display: grid;
+  gap: 10px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item small {
+  display: block;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cart-item-actions button:not(.remove-item) {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.cart-total {
+  display: block;
+  margin-top: 16px;
+  text-align: right;
+}
+
+.cart-empty {
+  margin: 0;
+  color: #6b7280;
 }
 
 .disabled-button {
